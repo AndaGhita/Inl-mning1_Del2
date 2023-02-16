@@ -69,22 +69,12 @@ class Deck:
     @staticmethod
     def insert(card_list, card):
         """ Inserts a 'card' in the correct spot in the deck 'card_list' """
-
-         added = False
+        
         i = 0
-        if len(card_list) == 0:
-            card_list.append(card)
-            added = True
-        else:
-            while i < len(card_list):
-                if (card > card_list[i]):
-                    i = i + 1
-                    continue
-                card_list.insert(i, card)
-                added = True
+        for i in range(len(card_list)):
+            if card < card_list[i]:
                 break
-        if added is False:
-            card_list.append(card)
+        card_list.insert(i,card)
 
         return card_list
 
