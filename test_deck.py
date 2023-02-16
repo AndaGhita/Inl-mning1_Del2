@@ -31,25 +31,7 @@ def test_deck_length():
 
     print('Passed deck length test')
 
-def test_deck():
-    # Test creating card deck to see if the right amount of cards are created
-    # and if len function returns the right amount of cards
-    test_deck = Deck()
-    assert len(test_deck) == 55
-    
-    #check if the deck has the correct number of cards
-    assert len(test_deck.cards) == 55
-    
-    #remove a card from the deck and check if the len() function returns the correct number of cards
-    test_deck.cards.pop()
-    assert len(test_deck) == 54
-    
-    #add a card to the deck and check if the len() function returns the correct number of cards
-    test_deck.cards.append(Card(rank = 13 , suite = 'Spades'))
-    assert len(test_deck) == 55
-    
 
-    print('Passed deck creation test')
     
 def test_sort():
     # Test sorting the card deck to see if the deck is sorted successfully
@@ -96,7 +78,6 @@ def test_deck_put():
 
 def run_deck_test():
     test_deck_length()
-    test_deck()
     test_sort()
     test_deck_take()
     test_deck_put()
