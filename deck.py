@@ -74,7 +74,10 @@ class Deck:
         for i in range(len(card_list)):
             if card < card_list[i]:
                 break
+
         card_list.insert(i,card)
+        print(i)
+        print(card_list)
 
         return card_list
 
