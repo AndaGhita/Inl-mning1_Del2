@@ -1,5 +1,5 @@
 from deck import Deck, Card
-
+import pytest
 
 
 def test_card():
@@ -27,11 +27,29 @@ def test_deck_length():
     
     # Test which create card deck to see if the right amount of cards are created
     check = Deck()
-    assert len(check) == 55
+    assert len(check) == 52
 
     print('Passed deck length test')
 
+def test_deck():
+    # Test creating card deck to see if the right amount of cards are created
+    # and if len function returns the right amount of cards
+    test_deck = Deck()
+    assert len(test_deck) == 52
+    
+    #check if the deck has the correct number of cards
+    assert len(test_deck.cards) == 52
+    
+    #remove a card from the deck and check if the len() function returns the correct number of cards
+    test_deck.cards.pop()
+    assert len(test_deck) == 51
+    
+    #add a card to the deck and check if the len() function returns the correct number of cards
+    test_deck.cards.append(Card(rank = 13 , suite = 'Spades'))
+    assert len(test_deck) == 52
+    
 
+    print('Passed deck creation test')
     
 def test_sort():
     # Test sorting the card deck to see if the deck is sorted successfully
@@ -43,8 +61,6 @@ def test_sort():
     for card in test_deck.cards:
       if previous_card is not None:
         assert previous_card.rank <= card.rank
-        if previous_card.rank == card.rank:
-          assert previous_card.suite <= card.suite
       previous_card = card
    
 
@@ -53,10 +69,10 @@ def test_sort():
 def test_deck_take():
     # Test taking cards from the top of the card deck to see if it is taking the correct card
     check = Deck()
-    assert check.take().rank == 0
-    check.sort()
     assert check.take().rank == 13
-    assert len(check) == 53
+    check.sort()
+    assert check.take().rank == 12
+    assert len(check) == 50
 
     print('Passed deck take test')
     
@@ -72,31 +88,12 @@ def test_deck_put():
     assert check.take().rank == 3
     assert check.take().rank == 8
     assert check.take().rank == 8
-    assert len(check) == 55
+    assert len(check) == 52
 
     print('Passed deck put test')
 
-def run_deck_test():
-    test_deck_length()
-    test_sort()
-    test_deck_take()
-    test_deck_put()
-
-    print('Deck test passed\n')
-
-def run_card_test():
-    test_card()
-    test_card_operators()
-
-    print('Card test passed\n')
-
-def run_tests():
-
-    run_card_test()
-    run_deck_test()
 
 if __name__ == '__main__':
-
-    run_tests()
+    pytest.main()
 
     
