@@ -1,6 +1,6 @@
 from deck import Deck, Card
 
-
+import pytest
 
 def test_card():
     # Test creating a card to see if the card is correctly created
@@ -27,7 +27,7 @@ def test_deck_length():
     
     # Test which create card deck to see if the right amount of cards are created
     check = Deck()
-    assert len(check) == 55
+    assert len(check) == 52
 
     print('Passed deck length test')
 
@@ -76,13 +76,6 @@ def test_deck_put():
 
     print('Passed deck put test')
 
-def run_deck_test():
-    test_deck_length()
-    test_sort()
-    test_deck_take()
-    test_deck_put()
-
-    print('Deck test passed\n')
 
 def run_card_test():
     test_card()
